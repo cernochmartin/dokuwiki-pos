@@ -1,0 +1,83 @@
+====== Zabezpečení bezdrátových sítí ======
+
+==== Problémy bezdrátových sítí ====
+
+Bezdrátová síť je ze své podstaty méně bezpečná než drátová:
+  * Signál se šíří vzduchem - kdokoli v dosahu může poslouchat
+  * Není potřeba fyzický přístup k zařízení
+  * Snadné odposlechy a útoky
+
+==== Historie zabezpečení Wi-Fi ====
+
+===== WEP (Wired Equivalent Privacy) =====
+
+  * 1999 - první zabezpečení Wi-Fi
+  * Šifrování: RC4 se statickým klíčem (64/128 bitů)
+  * **Stav: Zcela prolomený** - během minut pomocí nástrojů (aircrack-ng)
+  * Problém: IV (Initialization Vector) je příliš krátký a opakuje se
+
+===== WPA (Wi-Fi Protected Access) =====
+
+  * 2003 - dočasná náhrada za WEP
+  * Šifrování: TKIP (Temporal Key Integrity Protocol) - RC4 + dynamické klíče
+  * Autentizace: PSK (Pre-Shared Key) nebo 802.1X
+  * **Stav: Zastaralý** - prolomení (HR ping útok)
+  * Problém: TKIP používá stejný základ jako WEP
+
+===== WPA2 (IEEE 802.11i) =====
+
+  * 2004 - dnes standard
+  * Šifrování: **AES-CCMP** (Counter Mode CBC-MAC Protocol)
+  * Autentizace: PSK (osobní) nebo 802.1X (firemní)
+  * **Stav: Doporučeno** (s výhradami)
+  * **KRACK útok** (2017) - zranitelnost v 4-way handshake, opraveno aktualizacemi
+
+===== WPA3 =====
+
+  * 2018 - nejnovější standard
+  * Šifrování: **AES-GCMP** (Galois/Counter Mode Protocol)
+  * Autentizace: **SAE** (Simultaneous Authentication of Equals) - ochrana proti slovníkovým útokům
+  * **Forward secrecy** - prolomení hesla neodhalí dřívější provoz
+  * **Ochrana proti bruteforce** - offline útoky znemožněny
+  * Wi-Fi Easy Connect (DPP) - QR kód pro připojení
+
+==== Režimy zabezpečení ====
+
+| Režim | Popis | Vhodné pro |
+| **Open** | Žádné zabezpečení | Veřejné hotspoty (s captive portálem) |
+| **WPA2-PSK** | Osobní (před-sdílený klíč) | Domácnosti, malé kanceláře |
+| **WPA2-Enterprise** | 802.1X / RADIUS server | Firmy, školy |
+| **WPA3-Personal** | SAE | Domácnosti (nová zařízení) |
+| **WPA3-Enterprise** | 802.1X + GCMP | Firmy (vyšší bezpečnost) |
+
+==== Další bezpečnostní opatření ====
+
+===== Skrytí SSID =====
+
+AP nevysílá SSID v beacon framech. Zařízení musí znát SSID předem.
+
+  * **Nedoporučuje se jako jediné opatření** - SSID lze snadno zjistit (probe request/response)
+  * Ztěžuje připojení legitimním uživatelům
+
+===== MAC filtrování =====
+
+AP povoluje pouze zařízení s uvedenými MAC adresami.
+
+  * **Slabá ochrana** - MAC adresu lze podvrhnout (MAC spoofing)
+  * Vhodné jen jako doplňková vrstva
+
+===== WPS (Wi-Fi Protected Setup) =====
+
+Usnadňuje připojení zařízení (PIN nebo tlačítko).
+
+  * **Doporučeno vypnout** - PIN WPS lze prolomit za pár hodin (bruteforce)
+
+==== Útoky na Wi-Fi ====
+
+| Útok | Popis | Obrana |
+| **De-authentication** | Odeslání falešných deauth rámců | WPA3 (šifrované deauth rámce) |
+| **Evil Twin** | Falešné AP se stejným SSID | Ověřování certifikátů |
+| **Karma** | AP odpovídá na probe requesty | Zakázat probe response |
+| **KRACK** | Znovuodeslání handshake zpráv | Aktualizace firmwaru |
+| **PMKID** | Získání PMKID z AP | WPA3, silné heslo |
+| **WPS PIN** | Brute force PIN kódu | Vypnout WPS |

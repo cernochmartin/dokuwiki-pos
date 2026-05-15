@@ -1,0 +1,17 @@
+====== Routování mezi sítěmi ======
+
+Tento celek vysvětluje principy směrování (routování) v počítačových sítích a porovnává statické a dynamické routování. **(6 hodin)**
+
+----
+
+===== Podtémata =====
+
+  * [[routovani:princip|Princip routování]]
+  * [[routovani:protokoly|Dynamické routovací protokoly]]
+  * [[routovani:administrativni-vzdalenost|Administrative distance a metriky]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování budete schopni rozlišit principy a význam routování mezi sítěmi a napsat jednoduché routovací tabulky.

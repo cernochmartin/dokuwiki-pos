@@ -1,0 +1,34 @@
+====== Počítačové sítě (POS) ======
+
+Vítejte na výukovém portálu předmětu **Počítačové sítě** (POS) pro třídy **IT2A** a **IT2B**.
+
+**Vyučující:** Martin Černoch
+**Celková hodinová dotace:** 66 hodin
+
+----
+
+===== Tematické celky =====
+
+  * [[topologie:start|Topologie sítí]]
+  * [[komunikace:start|Komunikace v síti]]
+  * [[aktivni-prvky:start|Aktivní prvky sítí]]
+  * [[bezdatove-technologie:start|Bezdrátové technologie]]
+  * [[adresace:start|Adresace v síti]]
+  * [[routovani:start|Routování mezi sítěmi]]
+  * [[bezpecnost:start|Bezpečnost v počítačových sítích]]
+  * [[diagnostika:start|Diagnostika počítačové sítě]]
+
+----
+
+===== Výukové cíle =====
+
+Po absolvování předmětu budete schopni:
+
+  * klasifikovat sítě podle různých kritérií (fyzické, logické, geografické)
+  * popsat principy komunikace na síti s využitím modelů ISO/OSI a TCP/IP
+  * rozlišit aktivní prvky a nakonfigurovat základní parametry síťového zařízení
+  * nakonfigurovat bezdrátový přenosový systém a aplikovat jeho zabezpečení
+  * orientovat se v IP adresaci, DHCP a NAT
+  * rozlišit principy routování a sestavit jednoduché routovací tabulky
+  * navrhnout vhodné zabezpečení počítačové sítě
+  * identifikovat a odstranit běžné závady v síti

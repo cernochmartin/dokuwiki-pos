@@ -1,0 +1,58 @@
+====== Protokoly jednotlivých vrstev ======
+
+==== Aplikační vrstva (L7) ====
+
+===== HTTP/HTTPS =====
+  * **HTTP** (HyperText Transfer Protocol) - port **80**, přenos webových stránek
+  * **HTTPS** - port **443**, HTTP šifrovaný pomocí TLS/SSL
+  * Metody: GET, POST, PUT, DELETE, HEAD, OPTIONS
+  * Stavové kódy: 200 (OK), 301 (přesměrováno), 403 (zakázáno), 404 (nenalezeno), 500 (chyba serveru)
+
+===== FTP =====
+  * **File Transfer Protocol** - porty **20** (data) a **21** (řízení)
+  * Připojení: aktivní vs. pasivní režim
+  * Šifrovaná varianta: FTPS, SFTP (SSH File Transfer Protocol)
+
+===== DNS =====
+  * **Domain Name System** - port **53** (UDP i TCP)
+  * Překlad doménových jmen na IP adresy
+  * Hierarchická struktura: root → TLD (.cz, .com) → doména (seznam.cz)
+  * Záznamy: A (IPv4), AAAA (IPv6), MX (mail), CNAME (alias), NS (nameserver)
+
+===== DHCP =====
+  * Automatické přidělování IP konfigurace (viz [[adresace:dhcp|DHCP]])
+
+===== SMTP / POP3 / IMAP =====
+  * **SMTP** (Simple Mail Transfer) - port **25**, odesílání pošty
+  * **POP3** (Post Office Protocol) - port **110**, stahování pošty
+  * **IMAP** (Internet Message Access Protocol) - port **143**, správa pošty na serveru
+
+==== Transportní vrstva (L4) ====
+
+===== TCP a UDP =====
+  * Podrobné srovnání viz [[komunikace:tcp-vs-udp|TCP vs UDP]]
+
+==== Síťová vrstva (L3) ====
+
+===== IP (Internet Protocol) =====
+  * IPv4 - 32bitové adresy, délka hlavičky 20-60 B
+  * IPv6 - 128bitové adresy, pevná délka hlavičky 40 B
+
+===== ICMP (Internet Control Message Protocol) =====
+  * Diagnostika a hlášení chyb
+  * Typy: Echo Request/Reply (ping), Destination Unreachable, Time Exceeded
+
+===== ARP (Address Resolution Protocol) =====
+  * Překlad IP adres na **MAC adresy** v lokální síti
+  * ARP request (broadcast) → ARP reply (unicast)
+  * ARP cache (dočasné uložení)
+
+==== Linková vrstva (L2) ====
+
+===== Ethernet (IEEE 802.3) =====
+  * Rámec: preambule → cílové MAC (6 B) → zdrojové MAC (6 B) → EtherType (2 B) → data (46-1500 B) → FCS (4 B)
+  * Rychlosti: 10 Mb/s, 100 Mb/s, 1 Gb/s, 10 Gb/s, 25 Gb/s, 40 Gb/s, 100 Gb/s
+
+===== Wi-Fi (IEEE 802.11) =====
+  * Rámec podobný Ethernetu s doplňky pro bezdrátový přenos
+  * Řízení přístupu: CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)

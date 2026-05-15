@@ -1,0 +1,35 @@
+====== Základní principy kyberbezpečnosti ======
+
+==== Co je kyberbezpečnost? ====
+
+Kyberbezpečnost je soubor postupů, technologií a opatření na ochranu sítí, zařízení, programů a dat před útoky, poškozením nebo neoprávněným přístupem.
+
+==== CIA triáda ====
+
+Základní pilíře kyberbezpečnosti:
+
+| Pilíř | Význam | Příklad |
+| **C** - **Důvěrnost** (Confidentiality) | Data jsou přístupná pouze oprávněným osobám | Šifrování, přístupová práva |
+| **I** - **Integrita** (Integrity) | Data nebyla neoprávněně změněna | Hash, digitální podpis |
+| **A** - **Dostupnost** (Availability) | Data a služby jsou k dispozici oprávněným, když je potřebují | Redundance, zálohování, DDoS ochrana |
+
+==== Rozšíření - AAA ====
+
+  * **Authentication** (autentizace) - ověření identity
+  * **Authorization** (autorizace) - přidělení oprávnění
+  * **Accounting** (účtování/audit) - sledování činnosti uživatelů
+
+==== Princip nejmenšího oprávnění ====
+
+Uživatel nebo program má mít přístup jen k těm prostředkům, které nezbytně potřebuje ke své práci - nic víc. Tím se minimalizují škody při případném kompromitování.
+
+==== Obrana do hloubky (Defense in Depth) ====
+
+Více vrstev zabezpečení - pokud jedna selže, další ji může zachytit:
+
+  1. Fyzická bezpečnost (zámky, karty, kamery)
+  2. Bezpečnost sítě (firewall, IDS/IPS, VLAN)
+  3. Bezpečnost zařízení (antivirus, šifrování disku)
+  4. Bezpečnost aplikací (validace vstupů, autentizace)
+  5. Bezpečnost dat (šifrování, zálohování)
+  6. Bezpečnost uživatelů (školení, bezpečnostní politiky)

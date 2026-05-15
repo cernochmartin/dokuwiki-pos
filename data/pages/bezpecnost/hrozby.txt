@@ -1,0 +1,64 @@
+====== Hrozby v sítích ======
+
+==== Malware ====
+
+Škodlivý software (malicious software) - souhrnný název pro všechny typy škodlivých programů:
+
+| Typ | Popis |
+| **Virus** | Množí se připojováním k hostitelským souborům |
+| **Worm (červ)** | Samostatně se šíří sítí bez potřeby hostitelského souboru |
+| **Trojan (kůň)** | Vydává se za legitimní program, ale obsahuje škodlivý kód |
+| **Ransomware** | Zašifruje data a požaduje výkupné za dešifrování |
+| **Spyware** | Sleduje činnost uživatele a odesílá data útočníkovi |
+| **Adware** | Zobrazuje nežádoucí reklamu |
+| **Rootkit** | Skrývá svou přítomnost v systému (obtížná detekce) |
+
+==== Phishing ====
+
+Útoky pomocí falešných zpráv, které se vydávají za legitimní organizace s cílem vylákat přihlašovací údaje nebo osobní údaje.
+
+  * **E-mailový phishing** - hromadné falešné e-maily
+  * **Spear phishing** - cílený útok na konkrétní osobu
+  * **Smishing** - phishing přes SMS
+  * **Vishing** - phishing přes telefon (voice phishing)
+  * **Clone phishing** - kopie legitimního e-mailu s nahrazenou přílohou/odkazem
+
+===== Jak poznat phishing =====
+
+  * Podezřelá e-mailová adresa odesílatele (rozdíl 1 písmena)
+  * Naléhání na okamžitou akci („vaše účet bude zablokován")
+  * Gramatické chyby a neobratné formulace
+  * Odkaz vedoucí na jinou doménu (najetím myší zkontrolovat)
+  * Žádost o citlivé údaje (heslo, číslo karty)
+  * Podezřelé přílohy (.exe, .zip, .docm)
+
+==== DoS a DDoS útoky ====
+
+Cílem je znepřístupnit službu (narušení dostupnosti - A z CIA triády).
+
+| Typ | Popis |
+| **DoS** (Denial of Service) | Útok z jednoho zdroje |
+| **DDoS** (Distributed DoS) | Útok z mnoha zdrojů (botnet) současně |
+| **SYN flood** | Záplava SYN paketů (otevřené TCP spojení) |
+| **UDP flood** | Záplava UDP paketů na náhodné porty |
+| **HTTP flood** | Záplava legitimních HTTP požadavků |
+| **Amplifikace** | Zneužití serverů (DNS, NTP) k zesílení provozu |
+
+==== Další typy útoků ====
+
+  * **Man-in-the-Middle (MITM)** - útočník se vloží mezi komunikující strany
+  * **SQL Injection** - vložení SQL kódu do vstupních polí webových aplikací
+  * **Cross-Site Scripting (XSS)** - vložení JavaScriptu do webové stránky
+  * **ARP spoofing** - falešné ARP zprávy k přesměrování provozu v LAN
+  * **DNS spoofing** - podvržení DNS odpovědi (přesměrování na falešný web)
+  * **Sociální inženýrství** - manipulace lidí k prozrazení informací (viz [[bezpecnost:socialni-inzenyrstvi|Sociální inženýrství]])
+
+==== Obrana proti hrozbám ====
+
+  * Pravidelné aktualizace software (patch management)
+  * Kvalitní antivirový program
+  * Firewall (síťový i host-based)
+  * Bezpečnostní povědomí uživatelů (školení)
+  * Zálohování dat (3-2-1 pravidlo)
+  * Síťová segmentace (VLAN)
+  * Systémy detekce a prevence průniku (viz [[bezpecnost:ids-ips|IDS a IPS]])

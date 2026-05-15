@@ -1,0 +1,60 @@
+====== Princip routování ======
+
+==== Co je routování? ====
+
+Routování (směrování) je proces nalezení cesty pro datový paket od zdrojového k cílovému zařízení napříč sítí. Routery si mezi sebou předávají pakety na základě cílové IP adresy a routovacích tabulek.
+
+==== Jak router přeposílá paket ====
+
+  1. Router přijme paket na některém rozhraní
+  2. Podívá se na cílovou IP adresu v paketu
+  3. Vyhledá v routovací tabulce záznam, který odpovídá cíli (nejdelší shoda)
+  4. Přepošle paket na rozhraní uvedené v routovací tabulce k dalšímu hopu
+
+==== Routovací tabulka ====
+
+Router rozhoduje na základě routovací tabulky. Příklad:
+
+| Cílová síť | Maska | Next Hop (brána) | Rozhraní | Metrika |
+| 192.168.1.0 | 255.255.255.0 | - (přímo připojená) | eth0 | 0 |
+| 10.0.0.0 | 255.0.0.0 | 192.168.1.1 | eth0 | 1 |
+| 0.0.0.0 | 0.0.0.0 | 192.168.1.1 | eth0 | 1 |
+
+  * **Přímo připojené sítě** - router je zná automaticky
+  * **Statické cesty** - ručně zadané administrátorem
+  * **Dynamické cesty** - naučené od jiných routerů pomocí dynamických protokolů
+
+==== Statické routování ====
+
+Administrátor ručně zadá cesty do routovací tabulky.
+
+===== Výhody =====
+  * Jednoduché na konfiguraci v malých sítích
+  * Žádná režie (nevyužívá síťovou kapacitu pro výměnu informací)
+  * Předvídatelné a stabilní
+  * Bezpečné (nikdo nemůže vnutit falešné cesty)
+
+===== Nevýhody =====
+  * Náročné na správu ve velkých sítích
+  * Při změně topologie je nutné ručně překonfigurovat
+  * Náchylné k chybám
+
+===== Příklad konfigurace =====
+<code>
+R1(config)# ip route 10.0.1.0 255.255.255.0 192.168.1.2
+</code>
+
+==== Dynamické routování ====
+
+Routery si automaticky vyměňují informace o topologii sítě pomocí routovacích protokolů.
+
+===== Výhody =====
+  * Adaptace na změny v síti (automatické přepočítání)
+  * Méně chyb při konfiguraci
+  * Škálovatelnost pro velké sítě
+
+===== Nevýhody =====
+  * Režie (síťový provoz pro výměnu informací)
+  * Náročnější na výpočetní výkon routeru
+  * Složitější konfigurace
+  * Bezpečnostní rizika

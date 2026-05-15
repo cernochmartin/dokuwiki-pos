@@ -1,0 +1,47 @@
+====== Přenosové techniky ======
+
+==== Směry přenosu ====
+
+^ Režim ^ Popis ^ Příklad ^
+| **Simplex** | Přenos pouze jedním směrem (jednosměrný) | Rozhlas, TV vysílání |
+| **Poloduplex (Half-Duplex)** | Přenos oběma směry, ale jen jeden v daný okamžik | Wi-Fi, vysílačka (walkie-talkie) |
+| **Duplex (Full-Duplex)** | Přenos oběma směry současně | Telefon, Ethernet (s kroucenou dvojlinkou) |
+
+==== Multiplexing ====
+
+Multiplex je technika umožňující přenos více signálů jedním přenosovým médiem současně.
+
+===== Frekvenční multiplex (FDM) =====
+
+Každý kanál dostane přidělený vlastní frekvenční rozsah. Všechny kanály vysílají současně na různých frekvencích.
+
+  * **Příklad:** Rozhlasové vysílání, analogová televize, DSL
+
+===== Časový multiplex (TDM) =====
+
+Vysílací čas je rozdělen do časových slotů. Každý kanál vysílá ve svém přiděleném slotu. Synchronní TDM přiděluje sloty cyklicky bez ohledu na to, zda má kanál co vysílat.
+
+  * **Příklad:** Telefonní sítě (ISDN, T1/E1)
+
+===== Statistický multiplex =====
+
+Obdoba TDM, ale sloty jsou přidělovány dynamicky podle aktuální potřeby. Kanály, které zrovna nevysílají, nedostanou sloty - tím se efektivněji využívá kapacita.
+
+  * **Příklad:** Ethernet, IP sítě (paketový přenos)
+
+==== Přepojování okruhů ====
+
+Před vlastním přenosem dat se **sestaví vyhrazená cesta** (okruh) mezi odesílatelem a příjemcem. Cesta existuje po celou dobu komunikace, i když se zrovna nepřenášejí žádná data.
+
+  * Spojovací fáze → přenos dat → uvolňovací fáze
+  * **Výhoda:** Konstantní zpoždění, garantovaná kapacita
+  * **Nevýhoda:** Neefektivní využití při přerušovaném provozu
+  * **Příklad:** Klasická telefonní síť (PSTN)
+
+==== Přepojování paketů ====
+
+Data jsou rozdělena na **pakety**, které cestují sítí samostatně. Každý paket obsahuje cílovou adresu. Pakety mohou putovat různými cestami a na cílovém místě jsou opět složeny dohromady.
+
+  * **Výhoda:** Efektivní využití sítě, odolnost vůči výpadkům
+  * **Nevýhoda:** Proměnlivé zpoždění, možnost ztráty paketů
+  * **Příklad:** Internet (IP sítě)

@@ -1,0 +1,67 @@
+====== Dynamické routovací protokoly ======
+
+==== Rozdělení dynamických protokolů ====
+
+Dynamické routovací protokoly dělíme podle algoritmu a typu:
+
+===== Podle algoritmu =====
+
+  * **Distance Vector** - každý router zná pouze směr (vektor) a vzdálenost k cíli
+  * **Link State** - každý router má kompletní mapu sítě
+
+===== Podle autonomního systému =====
+
+  * **IGP (Interior Gateway Protocol)** - uvnitř jednoho autonomního systému
+  * **EGP (Exterior Gateway Protocol)** - mezi autonomními systémy
+
+==== RIP (Routing Information Protocol) ====
+
+  * Typ: **Distance Vector**, IGP
+  * Metrika: **Počet hopů** (max 15, 16 = nedostupný)
+  * Verze: RIPv1 (classful), RIPv2 (classless, autentizace)
+  * Aktualizace: každých 30 sekund
+  * Konvergence: pomalá
+
+===== Jednoduchý příklad =====
+<code>
+RouterA --[1 hop]-- RouterB --[1 hop]-- RouterC
+</code>
+RouterA vidí síť za RouterC jako vzdálenou 2 hopy.
+
+==== OSPF (Open Shortest Path First) ====
+
+  * Typ: **Link State**, IGP
+  * Algoritmus: **SPF** (Shortest Path First) - Dijkstrův algoritmus
+  * Metrika: **Cena** (cost) - obvykle odvozená z šířky pásma (cost = 100 Mb/s / bandwidth)
+  * Rychlá konvergence
+  * Škálovatelný (podpora hierarchie - oblasti/areas)
+  * Vhodný pro střední a velké sítě
+
+===== Výhody OSPF =====
+  * Rychlá konvergence při změně topologie
+  * Žádné smyčky (loop-free)
+  * Podpora VLSM a CIDR
+
+==== BGP (Border Gateway Protocol) ====
+
+  * Typ: **Path Vector**, EGP
+  * Použití: Propojování **autonomních systémů** (AS) na Internetu
+  * Metrika: komplexní atributy (AS path, local preference, MED...)
+  * Hlavní protokol Internetu - všechny veřejné routery na páteři Internetu používají BGP
+  * Politiky: rozhodování na základě pravidel, nejen metriky
+
+===== Autonomní systémy (AS) =====
+
+  * AS je jedna síť nebo skupina sítí pod jednotnou správou
+  * Každý AS má vlastní číslo (ASN) - 16bitové nebo 32bitové
+  * **Přiděluje:** RIPE (v Evropě)
+
+==== Srovnání protokolů ====
+
+| Vlastnost | RIP | OSPF | BGP |
+| Typ | Distance Vector | Link State | Path Vector |
+| Metrika | Hopy | Cost (šířka pásma) | Atributy |
+| Konvergence | Pomalá | Rychlá | Střední |
+| Max. velikost sítě | Malá (15 hopů) | Střední až velká | Globální |
+| Algoritmus | Bellman-Ford | Dijkstra (SPF) | Best Path Selection |
+| Použití | Malé sítě | Podnikové sítě | Internet |

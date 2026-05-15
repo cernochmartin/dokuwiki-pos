@@ -1,0 +1,84 @@
+====== Analýza sítě pomocí Wiresharku =====
+
+==== Co je Wireshark? ====
+
+Wireshark je **packet analyzer** (sniffer) - nástroj pro zachytávání a analýzu síťového provozu. Umožňuje vidět každý paket, který prochází síťovým rozhraním.
+
+==== Základní použití ====
+
+  1. Výběr síťového rozhraní pro zachytávání
+  2. Spuštění capture (tlačítko "Start")
+  3. Zastavení capture (tlačítko "Stop")
+  4. Analýza zachycených paketů
+
+==== Filtrování provozu ====
+
+=== = Capture filtry (před zachycením) =====
+
+| Filtr | Popis |
+| ``host 192.168.1.1`` | Pouze provoz s danou IP |
+| ``port 80`` | Pouze HTTP provoz |
+| ``tcp`` | Pouze TCP provoz |
+| ``udp`` | Pouze UDP provoz |
+| ``not arp`` | Vše kromě ARP |
+| ``src net 192.168.1.0/24`` | Provoz z dané sítě |
+
+===== Display filtry (po zachycení) =====
+
+| Filtr | Popis |
+| ``ip.addr == 192.168.1.1`` | Zobrazit pakety s IP 192.168.1.1 |
+| ``tcp.port == 80`` | Zobrazit HTTP provoz |
+| ``http.request`` | Pouze HTTP požadavky |
+| ``dns`` | Pouze DNS dotazy |
+| ``arp`` | Pouze ARP pakety |
+| ``icmp`` | Pouze ICMP (ping) |
+| ``tcp.flags.syn == 1`` | Pouze TCP SYN pakety |
+| ``!arp`` | Vše kromě ARP |
+
+==== Analýza jednotlivých protokolů ====
+
+===== ARP =====
+
+  * ARP request - broadcast "kdo má IP 192.168.1.1?"
+  * ARP reply - "já mám 192.168.1.1, moje MAC je ..."
+  * Sledování ARP spoofingu (dvě odpovědi na stejnou IP)
+
+===== TCP handshake =====
+
+Sledování třífázového handshaku:
+  1. [SYN] - klient žádá o spojení
+  2. [SYN, ACK] - server potvrzuje
+  3. [ACK] - klient potvrzuje
+
+===== HTTP =====
+
+  * GET /index.html - požadavek na webovou stránku
+  * HTTP/1.1 200 OK - odpověď serveru
+  * Sledování hlaviček (User-Agent, Cookies)
+
+===== DNS =====
+
+  * Standard query - dotaz na IP adresu domény
+  * Standard query response - odpověď s IP adresou
+
+==== Sledování TCP toků ====
+
+Wireshark umí zrekonstruovat **celý TCP tok** (Follow TCP Stream):
+  * Pravý klik na paket → Follow → TCP Stream
+  * Zobrazí celou komunikaci jako text (i včetně HTTP requestů a response)
+
+==== Užitečná tlačítka ====
+
+| Ikona | Funkce |
+| 🟢 | Start capture |
+| 🔴 | Stop capture |
+| 🔄 | Restart capture |
+| ✏️ | Přidat display filtr |
+| 📊 | Statistiky (Statistics → Protocol Hierarchy) |
+
+==== Tipy pro studenty ====
+
+  * Filtrujte pouze relevantní provoz (zbytečně nezachytávejte vše)
+  * Používejte barvy (View → Coloring Rules)
+  * Sledujte **Expert Info** (Analyzovat → Expert Info) - Wireshark sám upozorní na anomálie
+  * Pro testování používejte loopback (127.0.0.1) nebo vlastní provoz

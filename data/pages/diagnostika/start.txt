@@ -1,0 +1,102 @@
+====== Diagnostika počítačové sítě ======
+
+Tento celek se věnuje nástrojům a postupům pro diagnostiku a řešení problémů v počítačových sítích. **(4 hodiny)**
+
+----
+
+===== Podtémata =====
+
+  * [[diagnostika:wireshark|Analýza sítě pomocí Wiresharku]]
+  * [[diagnostika:reseni-problemu|Řešení problémů v síti]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování budete schopni identifikovat závadu v síti vhodným postupem, odstranit běžné závady v síti a konzultovat problémy s technickou podporou.
+
+----
+
+==== Základní diagnostické nástroje ====
+
+==== ping ====
+
+Nejzákladnější nástroj pro ověření dostupnosti zařízení v síti. Odesílá ICMP Echo Request a čeká na Echo Reply.
+
+<code>
+ping 8.8.8.8
+ping google.com
+ping -c 4 192.168.1.1   (Linux/macOS - 4 pakety)
+ping -n 4 192.168.1.1   (Windows - 4 pakety)
+</code>
+
+**Co testujeme:**
+  1. Ping na **localhost** (127.0.0.1) - funguje TCP/IP stack?
+  2. Ping na **vlastní IP** - funguje síťová karta?
+  3. Ping na **výchozí bránu** - funguje připojení k routeru?
+  4. Ping na **vzdálený server** (8.8.8.8) - funguje připojení k Internetu?
+  5. Ping na **doménové jméno** (google.com) - funguje DNS?
+
+==== traceroute / tracert ====
+
+Zobrazí cestu, kterou pakety putují k cíli. Umožňuje identifikovat, kde dochází ke ztrátě paketů.
+
+<code>
+traceroute google.com   (macOS/Linux)
+tracert google.com      (Windows)
+</code>
+
+  * Každý hop představuje jeden router na cestě
+  * '*' znamená, že router neodpověděl (může být zablokovaný ICMP)
+
+==== ipconfig / ifconfig / ip ====
+
+Zobrazení síťové konfigurace zařízení:
+
+<code>
+ipconfig /all              (Windows - podrobné info)
+ifconfig                   (macOS/Linux - starší)
+ip addr                    (Linux - novější)
+ip route                   (Linux - routovací tabulka)
+</code>
+
+==== nslookup / dig ====
+
+Diagnostika DNS:
+
+<code>
+nslookup google.com
+dig google.com             (Linux/macOS - podrobnější)
+</code>
+
+==== netstat ====
+
+Zobrazení aktivních síťových spojení a naslouchajících portů:
+
+<code>
+netstat -an                (všechna spojení a porty)
+netstat -r                 (routovací tabulka)
+netstat -i                 (statistiky rozhraní)
+</code>
+
+==== Postup při diagnostice ====
+
+Postupujte od nejjednoduššího po složitější:
+
+  1. **Fyzická vrstva** - svítí LED diody? Je kabel zapojený? Je Wi-Fi zapnutá?
+  2. **IP konfigurace** - má zařízení IP adresu? (ipconfig/ifconfig)
+  3. **Ping na bránu** - je dosažitelná výchozí brána?
+  4. **Ping na DNS** - ping na 8.8.8.8 (test spojení bez DNS)
+  5. **DNS** - ping na doménové jméno (test překladu jmen)
+  6. **Traceroute** - kde se pakety ztrácejí?
+  7. **Kontrola firewallu** - neblokuje firewall provoz?
+
+==== Běžné závady a jejich řešení ====
+
+| Problém | Možná příčina | Řešení |
+| Není připojení k síti | Odpojený kabel, vypnutá Wi-Fi | Zkontrolovat fyzické připojení |
+| APIPA adresa (169.254.x.x) | Nedostupný DHCP server | Zkontrolovat DHCP server, ručně nastavit IP |
+| Ping na bránu OK, ale nejde ven | Chybná routovací tabulka, špatná výchozí brána | Zkontrolovat výchozí bránu |
+| Ping na IP OK, domény ne | Chybný DNS server | Zkontrolovat DNS nastavení |
+| Pomalá síť | Příliš mnoho zařízení, kolize, slabý Wi-Fi signál | Segmentace sítě, upgrade switchů |
+| Občasné výpadky | Poškozený kabel, rušení Wi-Fi | Vyměnit kabel, změnit kanál Wi-Fi |

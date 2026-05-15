@@ -1,0 +1,84 @@
+====== Řešení problémů v síti ======
+
+==== Metodologie řešení problémů ====
+
+Systematický přístup k řešení síťových problémů:
+
+  1. **Identifikace problému** - co přesně nefunguje?
+  2. **Shromáždění informací** - ping, ipconfig, logy, dotaz uživatele
+  3. **Stanovení hypotézy** - co by mohlo být příčinou?
+  4. **Ověření hypotézy** - test, simulace
+  5. **Plán řešení** - jak problém opravit
+  6. **Implementace řešení** - provedení opravy
+  7. **Ověření funkčnosti** - testování
+  8. **Dokumentace** - záznam o problému a řešení
+
+==== Model OSI jako diagnostický nástroj ====
+
+Postupujeme od nejnižší vrstvy (fyzické) nahoru:
+
+^ Vrstva ^ Co testovat ^ Nástroj ^
+| L1 - Fyzická | Kabel, konektor, LED, napájení | Vizuální kontrola, kabelový tester |
+| L2 - Linková | MAC adresa, VLAN, STP | ``ipconfig /all``, ``show mac-address-table`` |
+| L3 - Síťová | IP adresa, maska, brána | ``ping``, ``traceroute``, ``ip route`` |
+| L4 - Transportní | Port, firewall | ``telnet``, ``netstat``, ``nmap`` |
+| L5-L7 - Aplikace | DNS, HTTP, SSL | ``nslookup``, ``curl``, Wireshark |
+
+==== Scénáře ====
+
+===== Scénář 1: "Není připojení k Internetu" =====
+
+  1. Kontrola fyzického připojení (LED na síťové kartě)
+  2. ``ipconfig`` - má zařízení IP adresu?
+  3. ``ping 127.0.0.1`` - funguje TCP/IP stack?
+  4. ``ping výchozí_brána`` - je dosažitelný router?
+  5. ``ping 8.8.8.8`` - funguje spojení ven?
+  6. ``ping google.com`` - funguje DNS?
+
+**Pravděpodobné příčiny:**
+  * APIPA adresa (169.254.x.x) → nefunkční DHCP
+  * Ping na bránu OK, na 8.8.8.8 ne → problém u ISP
+  * Ping na 8.8.8.8 OK, na google.com ne → chybný DNS
+
+===== Scénář 2: "Pomalá síť" =====
+
+  1. Měření rychlosti (speedtest.net)
+  2. Kontrola využití sítě (``iperf``, Wireshark)
+  3. Kontrola počtu zařízení v síti
+  4. Kontrola Wi-Fi kanálů (rušení)
+  5. Kontrola switch portů (kolize, chyby)
+  6. Kontrola kabeláže (poškozený kabel, délka)
+
+**Pravděpodobné příčiny:**
+  * Přetížená síť (příliš mnoho zařízení)
+  * Rušení Wi-Fi (sousední sítě, mikrovlnka)
+  * Poškozený kabel (packet loss, chyby na switchi)
+  * Špatný switch (half-duplex místo full-duplex)
+
+===== Scénář 3: "Některé stránky nejdou" =====
+
+  1. ``nslookup`` dané domény - překládá se správně?
+  2. ``ping`` na IP daného serveru - je dosažitelný?
+  3. ``tracert`` - kde se spojení ztrácí?
+  4. Zkusit jiný prohlížeč / zařízení
+  5. Zkusit HTTPS místo HTTP (port 443 místo 80)
+
+**Pravděpodobné příčiny:**
+  * Firewall blokuje konkrétní port
+  * DNS nezná doménu
+  * Webový server je nedostupný
+  * Chybná routovací tabulka
+
+==== Užitečné nástroje ====
+
+| Nástroj | Účel | Příkaz |
+| **ping** | Test dostupnosti | ``ping [IP]`` |
+| **traceroute** | Sledování cesty | ``tracert [IP]`` (Win), ``traceroute [IP]`` (Linux/macOS) |
+| **ipconfig** | Zobrazení IP konfigurace | ``ipconfig /all`` |
+| **nslookup** | DNS dotazy | ``nslookup [doména]`` |
+| **netstat** | Aktivní spojení | ``netstat -an`` |
+| **telnet** | Test portu | ``telnet [IP] [port]`` |
+| **nmap** | Skenování portů | ``nmap [IP]`` |
+| **iperf3** | Měření propustnosti | ``iperf3 -c [server]`` |
+| **Wireshark** | Analýza paketů | GUI nástroj |
+| **arp** | ARP cache | ``arp -a`` |

@@ -1,0 +1,15 @@
+2026-05-15 08:21:20	/Users/martin/projects/work/spskh/dokuwiki-pos/inc/parserutils.php(459)	E_WARNING: unserialize(): Error at offset 862 of 1868 bytes
+  #0 [internal function]: dokuwiki\ErrorHandler::errorHandler(2, 'unserialize(): ...', '/Users/martin/p...', 459)
+  #1 /Users/martin/projects/work/spskh/dokuwiki-pos/inc/parserutils.php(459): unserialize('a:2:{s:7:"curre...')
+  #2 /Users/martin/projects/work/spskh/dokuwiki-pos/inc/parserutils.php(264): p_read_metadata('start', true)
+  #3 /Users/martin/projects/work/spskh/dokuwiki-pos/inc/common.php(265): p_get_metadata('start')
+  #4 /Users/martin/projects/work/spskh/dokuwiki-pos/doku.php(101): pageinfo()
+  #5 {main}
+2026-05-15 08:21:42	/Users/martin/projects/work/spskh/dokuwiki-pos/inc/parserutils.php(459)	E_WARNING: unserialize(): Error at offset 862 of 1868 bytes
+  #0 [internal function]: dokuwiki\ErrorHandler::errorHandler(2, 'unserialize(): ...', '/Users/martin/p...', 459)
+  #1 /Users/martin/projects/work/spskh/dokuwiki-pos/inc/parserutils.php(459): unserialize('a:2:{s:7:"curre...')
+  #2 /Users/martin/projects/work/spskh/dokuwiki-pos/inc/parserutils.php(264): p_read_metadata('start', true)
+  #3 /Users/martin/projects/work/spskh/dokuwiki-pos/inc/common.php(265): p_get_metadata('start')
+  #4 /Users/martin/projects/work/spskh/dokuwiki-pos/doku.php(101): pageinfo()
+  #5 /Users/martin/projects/work/spskh/dokuwiki-pos/index.php(76): require('/Users/martin/p...')
+  #6 {main}

@@ -1,0 +1,70 @@
+====== Firewall, VPN a VLAN ======
+
+==== Firewall ====
+
+Firewall je zařízení nebo software, které řídí přístup mezi sítěmi na základě bezpečnostních pravidel.
+
+===== Typy firewallů =====
+
+| Typ | Vrstva | Popis |
+| **Paketový filtr** | L3-L4 | Filtruje podle IP adres, portů, protokolů |
+| **Stavový (Stateful)** | L3-L4 | Sleduje stav spojení, umožňuje návratový provoz |
+| **Aplikační (Proxy)** | L7 | Filtruje na úrovni aplikace (HTTP, FTP, DNS) |
+| **NGFW** (Next-Gen) | L3-L7 | Kombinace + IDS/IPS, kontrola aplikací |
+| **Host-based** | - | Firewall na koncovém zařízení (Windows Firewall, iptables) |
+
+===== Základní pravidla firewallu =====
+
+Obvykle funguje na principu **"co není povoleno, je zakázáno"** (default deny):
+
+Příklad pravidel (ACL - Access Control List):
+<code>
+1. Povolit provoz z vnitřní sítě (192.168.1.0/24) ven
+2. Povolit návratový provoz (související se spojením)
+3. Povolit příchozí HTTP/HTTPS na web server (10.0.0.10:80,443)
+4. Zakázat vše ostatní
+</code>
+
+==== VPN (Virtual Private Network) ====
+
+VPN vytváří **zašifrovaný tunel** mezi dvěma body přes nedůvěryhodnou síť (např. Internet).
+
+===== Hlavní účely VPN =====
+
+  * **Vzdálený přístup** (Remote Access) - zaměstnanec se připojí z domova do firemní sítě
+  * **Site-to-Site** - propojení dvou vzdálených poboček přes Internet
+  * **Ochrana soukromí** - skrytí IP adresy, šifrování provozu
+
+===== Typy VPN protokolů =====
+
+| Protokol | Port | Šifrování | Poznámka |
+| **IPsec** | UDP 500, 4500 | AES, 3DES | Spolehlivý, standardní |
+| **OpenVPN** | UDP/TCP 1194 | AES, Chacha20 | Open-source, flexibilní |
+| **WireGuard** | UDP 51820 | Chacha20 | Nový, rychlý, jednoduchý |
+| **L2TP/IPsec** | UDP 1701+500+4500 | AES (přes IPsec) | Kombinace s IPsec |
+| **PPTP** | TCP 1723 | MPPE (slabé) | **Zastaralý, nebezpečný** |
+
+==== VLAN (Virtual Local Area Network) ====
+
+VLAN umožňuje **logicky rozdělit** jednu fyzickou síť na více izolovaných sítí na L2 vrstvě.
+
+===== Proč VLAN používat? =====
+
+  * **Segmentace sítě** - oddělení provozu (např. učitelé × studenti, data × VoIP)
+  * **Bezpečnost** - izolace citlivých systémů
+  * **Výkon** - omezení broadcast domény
+  * **Flexibilita** - uživatelé mohou být v jedné VLAN i na různých switchech
+
+===== Jak VLAN funguje =====
+
+Každý rámec je označen **VLAN ID** (tag) podle standardu **IEEE 802.1Q**:
+
+  * **Access port** - port pro koncové zařízení (1 VLAN)
+  * **Trunk port** - propojení mezi switchi (více VLAN s tagy)
+
+Příklad: Switch s VLAN 10 (učitelé) a VLAN 20 (studenti)
+<code>
+VLAN 10 - 192.168.10.0/24
+VLAN 20 - 192.168.20.0/24
+</code>
+Provoz mezi VLAN zajišťuje router (nebo L3 switch) - **Inter-VLAN routing**.

@@ -1,0 +1,64 @@
+====== Kanály, rušení a pokrytí ======
+
+==== Wi-Fi kanály ====
+
+===== Pásmo 2,4 GHz =====
+
+  * Kanály 1-13 (v Evropě), šířka kanálu 22 MHz
+  * Kanály se překrývají - pouze **1, 6 a 11** jsou nepřekrývající se
+  * Výhody: Lepší prostupnost zdmi, větší dosah
+  * Nevýhody: Překrývání kanálů, rušení od mikrovlnek, Bluetooth, ZigBee
+
+===== Pásmo 5 GHz =====
+
+  * Kanály: 36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 149, 153, 157, 161, 165
+  * Kanály 52-64 a 100-144 vyžadují DFS (Dynamic Frequency Selection) - radarová detekce
+  * Kanály se **nepřekrývají** (20 MHz šířka)
+  * Výhody: Méně rušení, vyšší rychlost
+  * Nevýhody: Menší dosah, hůře prostupuje překážkami
+
+==== Šířka kanálu ====
+
+| Šířka | Rychlost (802.11ac) | Poznámka |
+| 20 MHz | 86,7 Mb/s | Základní šířka |
+| 40 MHz | 200 Mb/s | Spojení dvou 20 MHz kanálů |
+| 80 MHz | 433 Mb/s | Běžné u 802.11ac |
+| 160 MHz | 867 Mb/s | Nejvyšší rychlost |
+
+Čím širší kanál, tím vyšší rychlost, ale větší náchylnost k rušení a méně volných kanálů.
+
+==== Rušení ====
+
+Typy rušení Wi-Fi signálu:
+
+  * **Ko-kanálové rušení** - sousední AP na stejném kanálu
+  * **Sousední kanály** - AP na překrývajících se kanálech
+  * **Mikrovlnná trouba** - 2,4 GHz silné rušení
+  * **Bluetooth** - 2,4 GHz, frequency hopping
+  * **Fyzické překážky** - zdi, kovové konstrukce, zrcadla, voda
+
+==== Pokrytí ====
+
+Faktory ovlivňující pokrytí Wi-Fi:
+
+  * **Vysílací výkon AP** (typicky 20-23 dBm, max 100 mW v ČR)
+  * **Citlivost přijímače** (typicky -70 až -90 dBm)
+  * **Překážky** (cihla ~ -4 dB, beton ~ -10 dB, kov ~ -20+ dB)
+  * **Antény** (všesměrové, směrové, zisk antény v dBi)
+
+===== Orientační hodnoty signálu =====
+
+| Síla signálu | Kvalita | Poznámka |
+| -30 dBm | Výborná | Vedle AP |
+| -50 dBm | Velmi dobrá | Běžné použití |
+| -67 dBm | Dobrá | Streamování videa |
+| -70 dBm | Slabší | Web, e-mail |
+| -80 dBm | Velmi slabá | Časté výpadky |
+| -90 dBm | Nedostupná | Žádné spojení |
+
+==== Site Survey ====
+
+Průzkum pokrytí sítě pomocí:
+  * **Spektrální analyzér** - zobrazení rušení na kanálech
+  * **Wi-Fi scanner** (inSSIDer, Wifinfo, NetSpot) - zobrazení okolních AP
+  * **Heat mapa** - vizuální mapa pokrytí v prostoru

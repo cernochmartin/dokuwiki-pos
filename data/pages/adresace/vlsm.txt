@@ -1,0 +1,61 @@
+====== VLSM a beztřídní adresace =====
+
+==== CIDR (Classless Inter-Domain Routing) ====
+
+CIDR nahradil třídní adresaci (classful) v roce 1993. Místo pevných tříd A, B, C používá **proměnnou délku masky** (VLSM).
+
+Zápis: **IP/maska** (např. 192.168.1.0/24)
+
+==== VLSM (Variable Length Subnet Mask) ====
+
+VLSM umožňuje **dělení sítě na podsítě o různé velikosti** podle potřeby. Na rozdíl od FLSM (Fixed Length Subnet Mask) nedochází k plýtvání adresami.
+
+===== Příklad: Firma se 3 odděleními =====
+
+Máme síť **192.168.1.0/24** a potřebujeme:
+
+| Oddělení | Počet zařízení |
+| IT | 50 |
+| Výroba | 25 |
+| Kanceláře | 10 |
+
+===== Postup VLSM =====
+
+  1. Seřadit požadavky sestupně: IT (50) → Výroba (25) → Kanceláře (10)
+  2. Potřebné bity pro hosty: 50 → 6 bitů (2^6 = 64), 25 → 5 bitů (2^5 = 32), 10 → 4 bity (2^4 = 16)
+
+| Oddělení | Počet | Maska | Síť | Rozsah | Broadcast |
+| IT | 50 | /26 (255.255.255.192) | 192.168.1.0 | 192.168.1.1 - .62 | 192.168.1.63 |
+| Výroba | 25 | /27 (255.255.255.224) | 192.168.1.64 | 192.168.1.65 - .94 | 192.168.1.95 |
+| Kanceláře | 10 | /28 (255.255.255.240) | 192.168.1.96 | 192.168.1.97 - .110 | 192.168.1.111 |
+| Rezerva | - | /28 | 192.168.1.112 | 192.168.1.113 - .126 | 192.168.1.127 |
+
+Všimněte si: s FLSM (/26 = 4 podsítě po 62 hostech) bychom dostali 4 × 62 = 248 adres, ale potřebujeme jen 85. VLSM ušetří 163 adres pro další využití.
+
+==== Tabulka masek ====
+
+| Prefix | Maska | Počet hostů | Použití |
+| /30 | 255.255.255.252 | 2 | Point-to-point spoje (ISP) |
+| /29 | 255.255.255.248 | 6 | Malé sítě |
+| /28 | 255.255.255.240 | 14 | Malé sítě |
+| /27 | 255.255.255.224 | 30 | Oddělení |
+| /26 | 255.255.255.192 | 62 | Střední sítě |
+| /25 | 255.255.255.128 | 126 | Střední sítě |
+| /24 | 255.255.0.0 | 254 | Běžná LAN |
+| /23 | 255.254.0.0 | 510 | Větší sítě |
+| /22 | 255.252.0.0 | 1022 | Vetší sítě |
+| /16 | 255.255.0.0 | 65534 | Velké sítě |
+
+==== Routování mezi VLSM sítěmi ====
+
+Router musí podporovat **classless routing** (ip classless). V classless módu router hledá **nejdelší shodu** (longest prefix match) v routovací tabulce.
+
+Příklad routovací tabulky:
+<code>
+192.168.1.0/26   via 10.0.0.2
+192.168.1.64/27  via 10.0.0.3
+192.168.1.96/28  via 10.0.0.4
+0.0.0.0/0        via 10.0.0.1   (default route)
+</code>
+
+Pokud router hledá cestu k 192.168.1.100, vybere **192.168.1.96/28** (nejdelší shoda = 28 bitů), nikoli 192.168.1.64/27 (27 bitů) nebo 192.168.1.0/26 (26 bitů).

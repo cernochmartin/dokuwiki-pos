@@ -1,0 +1,12 @@
+data/cache/*
+data/tmp/*
+data/locks/*
+data/index/*
+data/meta/*
+data/attic/*
+data/media_attic/*
+data/media_meta/*
+data/changes.log
+data/deleted/*
+!data/cache/.htaccess
+!data/tmp/.htaccess

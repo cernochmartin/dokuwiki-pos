@@ -1,0 +1,18 @@
+====== Topologie sítí ======
+
+Tento tematický celek pokrývá základní pojmy ze světa počítačových sítí a jejich taxonomii. **(8 hodin)**
+
+----
+
+===== Podtémata =====
+
+  * [[topologie:zakladni-pojmy|Základní pojmy]]
+  * [[topologie:taxonomie|Taxonomie počítačových sítí]]
+  * [[topologie:fyzicke-topologie|Fyzické topologie]]
+  * [[topologie:prenosova-media|Přenosová média]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování tohoto celku budete schopni klasifikovat sítě podle zvoleného kritéria (fyzického, logického, geografického).

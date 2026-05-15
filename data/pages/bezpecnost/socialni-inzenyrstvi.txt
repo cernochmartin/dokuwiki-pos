@@ -1,0 +1,52 @@
+====== Sociální inženýrství a bezpečnostní politiky =====
+
+==== Sociální inženýrství ====
+
+Sociální inženýrství je manipulace lidí k prozrazení důvěrných informací nebo provedení akcí. Člověk je nejslabší článek bezpečnosti.
+
+===== Nejčastější techniky =====
+
+| Technika | Popis | Příklad |
+| **Pretexting** | Útočník vymyslí scénář (pretext), aby získal důvěru | "Volám z IT podpory, potřebujeme vaše přihlašovací údaje" |
+| **Phishing** | Falešné e-maily vydávající se za legitimní organizace | "Váš účet byl napaden, klikněte zde pro změnu hesla" |
+| **Tailgating** | Fyzické pronásledování oprávněné osoby do zabezpečené zóny | Někdo se "přilepí" za zaměstnancem přes čipové dveře |
+| **Baiting** | Nastražení lákadla (USB klíčenka s malwarem) | "Ztracený" USB disk na parkovišti se škodlivým softwarem |
+| **Quid pro quo** | Nabídka služby výměnou za informace | "Bezplatná kontrola zabezpečení" |
+| **Vishing** | Phishing po telefonu | Falešný pracovník banky volající o ověření účtu |
+
+===== Proč sociální inženýrství funguje? =====
+
+  * Autorita - lidé respektují autority ("volám z IT")
+  * Sympatie - ochota pomoci
+  * Reciprocita - potřeba "splatit" laskavost
+  * Naléhavost - vytvoření stresu a paniky ("váš účet bude smazán")
+  * Strach - obava z následků
+
+==== Bezpečnostní politiky ====
+
+Soubor pravidel a postupů pro zajištění bezpečnosti organizace.
+
+===== Příklady politik =====
+
+  * **Politika hesel** - minimální délka, komplexita, obnova
+  * **Přístupová politika** - kdo má přístup k jakým datům
+  * **Přijatelné použití** (AUP) - jak smí být využívány firemní prostředky
+  * **BYOD politika** - pravidla pro osobní zařízení v síti
+  * **Zálohovací politika** - co, jak často a kam zálohovat
+  * **Incident response** - postup při bezpečnostním incidentu
+
+==== Security Awareness ====
+
+Pravidelné školení zaměstnanců v oblasti bezpečnosti:
+
+  * Rozpoznání phishingových e-mailů
+  * Bezpečné zacházení s hesly
+  * Fyzická bezpečnost (zamykání obrazovky, clean desk policy)
+  * Hlášení bezpečnostních incidentů
+  * Testovací phishingové kampaně
+
+==== 3-2-1 pravidlo zálohování ====
+
+  * **3** kopie dat
+  * **2** různá média (disk + cloud)
+  * **1** kopie mimo lokalitu (off-site)

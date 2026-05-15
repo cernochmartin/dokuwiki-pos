@@ -1,0 +1,96 @@
+====== Managed switch ======
+
+==== Co je managed switch? ====
+
+Řízený (managed) switch umožňuje administrátorovi **konfigurovat, monitorovat a spravovat** síťový provoz. Na rozdíl od unmanaged switch poskytuje pokročilé funkce.
+
+==== Základní funkce ====
+
+===== MAC tabulka (CAM table) =====
+
+Switch si ukládá tabulku MAC adres - ví, na kterém portu je které zařízení.
+
+<code>
+SW1# show mac address-table
+   Mac Address Table
+-------------------------------------------
+  VLAN    Mac Address       Type        Ports
+  ----    -----------       --------    -----
+    1     0050.7966.6800    DYNAMIC     Fa0/1
+    1     0050.7966.6801    DYNAMIC     Fa0/2
+   10     0050.7966.6802    DYNAMIC     Fa0/10
+</code>
+
+===== VLAN (Virtual LAN) =====
+
+Rozdělení fyzické sítě na logické segmenty. Rámce z různých VLAN jsou izolovány.
+
+  * **Access port** - port přiřazený do jedné VLAN (pro koncová zařízení)
+  * **Trunk port** - přenáší rámce z více VLAN (mezi switchi, označené 802.1Q tagem)
+
+<code>
+SW1(config)# vlan 10
+SW1(config-vlan)# name Teachers
+SW1(config)# vlan 20
+SW1(config-vlan)# name Students
+SW1(config)# interface fastEthernet 0/1
+SW1(config-if)# switchport mode access
+SW1(config-if)# switchport access vlan 10
+SW1(config)# interface fastEthernet 0/24
+SW1(config-if)# switchport mode trunk
+SW1(config-if)# switchport trunk allowed vlan 10,20
+</code>
+
+===== Spanning Tree Protocol (STP) =====
+
+Protokol pro odstranění **smyček** v redundantní síti. Blokuje redundantní cesty, aby se zabránilo broadcast storm.
+
+  * Standard: IEEE 802.1D
+  * Rychlá varianta: Rapid STP (IEEE 802.1w)
+
+==== Pokročilé funkce ====
+
+===== Port mirroring (SPAN) =====
+
+Kopírování provozu z jednoho portu na jiný (pro monitoring, Wireshark).
+
+<code>
+SW1(config)# monitor session 1 source interface fa0/1
+SW1(config)# monitor session 1 destination interface fa0/24
+</code>
+
+===== Link Aggregation (LACP) =====
+
+Spojení více fyzických portů do jednoho logického pro zvýšení propustnosti a redundance.
+
+  * Standard: IEEE 802.3ad
+  * Max. 8 portů v jedné skupině
+
+===== PoE (Power over Ethernet) =====
+
+Napájení zařízení po Ethernet kabelu (IP kamery, AP, telefony).
+
+  * Standard: IEEE 802.3af (15,4 W), 802.3at (30 W), 802.3bt (60-90 W)
+
+===== Storm control =====
+
+Omezení broadcast/multicast/unicast provozu pro ochranu před přetížením.
+
+==== Konfigurace přes CLI ====
+
+<code>
+SW1> enable
+SW1# configure terminal
+SW1(config)# hostname SW-Main
+SW-Main(config)# enable secret class
+SW-Main(config)# username admin secret cisco
+SW-Main(config)# ip domain-name skola.local
+SW-Main(config)# crypto key generate rsa
+SW-Main(config)# line vty 0 15
+SW-Main(config-line)# transport input ssh
+SW-Main(config-line)# login local
+SW-Main(config)# interface vlan 1
+SW-Main(config-if)# ip address 192.168.1.10 255.255.255.0
+SW-Main(config-if)# no shutdown
+SW-Main(config)# ip default-gateway 192.168.1.1
+</code>

@@ -1,0 +1,50 @@
+====== Problematika hesel ======
+
+==== Proč jsou hesla důležitá? ====
+
+Hesla jsou nejběžnější forma autentizace. Slabé nebo znovu použité heslo je nejčastější příčinou napadení účtu.
+
+==== Jak vytvořit silné heslo ====
+
+  * **Délka:** Minimálně 12-16 znaků (čím delší, tím silnější)
+  * **Komplexita:** Kombinace velkých písmen, malých písmen, číslic a speciálních znaků
+  * **Nepoužívat:** Jména, data narození, slova ze slovníku, "123456", "heslo", "admin"
+  * **Unikátnost:** Každý účet má vlastní, unikátní heslo
+
+==== Časté chyby ====
+
+  * Používání stejného hesla na více místech
+  * Ukládání hesel v nezašifrované podobě
+  * Sdílení hesel s ostatními
+  * Používání výchozích hesel (admin/admin)
+  * Zapamatování hesla v prohlížeči bez hlavního hesla
+
+==== Správce hesel ====
+
+Doporučený nástroj pro bezpečnou správu hesel:
+
+  * Generuje náhodná silná hesla
+  * Ukládá je v zašifrované podobě
+  * Stačí si zapamatovat jedno **hlavní heslo** (master password)
+  * Příklady: Bitwarden, KeePass, 1Password, LastPass
+
+==== Dvoufaktorová autentizace (2FA/MFA) ====
+
+Kromě hesla vyžaduje druhý faktor:
+
+  * **Něco, co víš** - heslo (1. faktor)
+  * **Něco, co máš** - telefon, HW token (2. faktor)
+  * **Něco, co jsi** - otisk prstu, obličej (biometrie)
+
+Typy 2FA:
+  * **TOTP** (Time-based One-Time Password) - Google Authenticator, Authy
+  * **SMS kód** - méně bezpečné (SIM swapping útoky)
+  * **Hardwarový klíč** - YubiKey, Titan Key (nejbezpečnější)
+
+==== Bezpečnostní doporučení ====
+
+  * Používejte správce hesel
+  * Aktivujte 2FA všude, kde je to možné
+  * Nikdy nesdílejte svá hesla
+  * Pravidelně měňte hesla (zejména při podezření na kompromitaci)
+  * Nesdělujte hesla ani údaje z 2FA nikomu (ani "technické podpoře")

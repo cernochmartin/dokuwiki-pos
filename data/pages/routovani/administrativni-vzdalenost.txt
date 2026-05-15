@@ -1,0 +1,63 @@
+====== Administrative Distance a metriky ======
+
+==== Administrative Distance (AD) ====
+
+AD je **míra důvěryhodnosti** zdroje routovací informace. Čím nižší číslo, tím důvěryhodnější.
+
+| Zdro | AD |
+| Přímo připojená síť | 0 |
+| Statická cesta | 1 |
+| EIGRP summary | 5 |
+| eBGP | 20 |
+| EIGRP (internal) | 90 |
+| IGRP | 100 |
+| OSPF | 110 |
+| IS-IS | 115 |
+| RIP | 120 |
+| EIGRP (external) | 170 |
+| iBGP | 200 |
+| Neznámá (nepoužitelná) | 255 |
+
+**Příklad:** Pokud router zná cestu k 10.0.0.0/24 přes RIP (AD 120) i OSPF (AD 110), použije OSPF, protože má nižší AD.
+
+==== Metriky routovacích protokolů ====
+
+Každý protokol používá jinou metriku pro výběr nejlepší cesty:
+
+===== RIP =====
+  * **Metrika:** Počet hopů (hop count)
+  * Max. 15 hopů (16 = nedostupný)
+  * Ignoruje šířku pásma, zpoždění - vybírá cestu s nejmenším počtem routerů
+
+===== OSPF =====
+  * **Metrika:** Cost (cena)
+  * Vzorec: **Cost = 100 Mb/s / šířka pásma rozhraní**
+  * Např.: FastEthernet (100 Mb/s) = cost 1, GigabitEthernet (1000 Mb/s) = cost 0,1 (zaokrouhleno na 1)
+  * Lze ručně nastavit: ``ip ospf cost 10``
+
+===== EIGRP =====
+  * **Metrika:** Kombinace (výchozí: bandwidth + delay)
+  * Vzorec: **Metric = (K1 × BW + K2 × BW/(256-LOAD) + K3 × DELAY) × 256**
+  * Výchozí K hodnoty: K1=1, K3=1, ostatní 0
+
+===== BGP =====
+  * **Metrika:** Atributy - nejedná se o jednoduchou metriku
+  * Nejlepší cesta se vybírá podle seznamu atributů (Weight → Local Preference → AS Path → Origin → MED → ...)
+
+==== Výběr nejlepší cesty ====
+
+Router při výběru cesty postupuje:
+
+  1. **Nejdelší shoda** (longest prefix match) - nejpřesnější cíl
+  2. **Nejnižší Administrative Distance** - nejdůvěryhodnější zdroj
+  3. **Nejnižší metrika** - nejlepší cesta (v rámci stejného protokolu)
+
+===== Příklad =====
+
+Router zná tyto cesty do 10.0.0.0/24:
+<code>
+OSPF:    10.0.0.0/24 via 192.168.1.1, cost 10,   AD 110
+RIP:     10.0.0.0/24 via 192.168.2.1, hop 3,     AD 120
+Static:  10.0.0.0/24 via 192.168.3.1,            AD 1
+</code>
+Router použije **statickou cestu** (AD 1), protože má nejnižší AD.

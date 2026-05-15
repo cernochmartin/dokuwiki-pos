@@ -1,0 +1,19 @@
+====== Adresace v síti ======
+
+Tento celek se věnuje IP adresaci, výpočtům sítí a subsítí, DHCP a principům NAT. **(10 hodin)**
+
+----
+
+===== Podtémata =====
+
+  * [[adresace:ip-adresy|IP adresy a třídy]]
+  * [[adresace:vy-po cet-siti|Výpočty IP sítí a subsítí]]
+  * [[adresace:dhcp|DHCP a další služby]]
+  * [[adresace:vlsm|VLSM a beztřídní adresace]]
+  * [[adresace:ipv6|Protokol IPv6]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování se budete orientovat v IP adresaci počítačových sítí, použijete funkci DHCP služby, použijete funkci překladu síťových adres (NAT) a rozlišíte protokoly IPv4 a IPv6.

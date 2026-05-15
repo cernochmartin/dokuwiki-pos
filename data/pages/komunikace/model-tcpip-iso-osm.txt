@@ -1,0 +1,47 @@
+====== Síťový model TCP/IP a RM ISO/OSI ======
+
+==== Vrstvový model ====
+
+Síťová komunikace je rozdělena do **vrstev**. Každá vrstva plní specifickou funkci a komunikuje pouze se sousedními vrstvami. Díky tomu lze měnit implementaci jedné vrstvy bez dopadu na ostatní.
+
+===== RM ISO/OSI (7 vrstev) =====
+
+Referenční model ISO/OSI (Open Systems Interconnection) byl vyvinut organizacemi ISO a ITU-T jako teoretický model síťové komunikace.
+
+| Číslo | Vrstva | Anglicky | Popis | Příklad |
+| 7 | **Aplikační** | Application | Služby pro aplikace uživatele | HTTP, FTP, SMTP, DNS |
+| 6 | **Prezentační** | Presentation | Formátování a šifrování dat | SSL/TLS, JPEG, ASCII |
+| 5 | **Relační** | Session | Správa komunikačních relací | NetBIOS, RPC |
+| 4 | **Transportní** | Transport | Spolehlivý přenos dat, řízení toku | TCP, UDP |
+| 3 | **Síťová** | Network | Směrování a adresace | IP, ICMP, ARP |
+| 2 | **Linková** | Data Link | Rámce, MAC adresy, přístup k médiu | Ethernet, Wi-Fi (802.11) |
+| 1 | **Fyzická** | Physical | Přenos bitů po médiu | kabel, konektor, signál |
+
+===== Model TCP/IP (4 vrstvy) =====
+
+Model TCP/IP je praktický model používaný v reálných sítích (Internet). Vznikl zkrácením ISO/OSI:
+
+| Číslo | Vrstva | Anglicky | Odpovídající vrstvy ISO/OSI |
+| 4 | **Aplikační** | Application | 7+6+5 (Aplikační + Prezentační + Relační) |
+| 3 | **Transportní** | Transport | 4 (Transportní) |
+| 2 | **Síťová** | Internet | 3 (Síťová) |
+| 1 | **Vrstva síťového rozhraní** | Network Access | 2+1 (Linková + Fyzická) |
+
+==== Komunikační protokoly (principy) ====
+
+Protokol je soubor pravidel, kterými se řídí komunikace mezi zařízeními. Definuje:
+
+  * **Syntaxi** - formát a strukturu dat
+  * **Sémantiku** - význam jednotlivých polí a zpráv
+  * **Časování** - kdy a v jakém pořadí se data vysílají
+
+==== Enkapsulace dat ====
+
+Při odesílání dat prochází data shora dolů jednotlivými vrstvami. Každá vrstva přidá svou **hlavičku** (a případně **patičku**):
+
+  * Aplikační vrstva: data (message)
+  * Transportní vrstva: **segment/datagram** (TCP/UDP hlavička + data)
+  * Síťová vrstva: **paket** (IP hlavička + segment)
+  * Linková vrstva: **rámec** (MAC hlavička + IP paket + FCS)
+
+Opačný proces na straně příjemce se nazývá **dekapsulace** - jednotlivé vrstvy odebírají své hlavičky.

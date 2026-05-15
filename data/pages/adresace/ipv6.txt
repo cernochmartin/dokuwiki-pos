@@ -1,0 +1,81 @@
+====== Protokol IPv6 =====
+
+==== Proč IPv6? ====
+
+  * IPv4 má **4,3 miliardy** adres (32 bitů) - nestačí
+  * IPv6 má **340 undeciliard** adres (128 bitů) - 6×10^28 adres na každého člověka
+  * NAT byl u IPv4 nutností, IPv6 ho nepotřebuje - každé zařízení má veřejnou adresu
+  * Jednodušší hlavička, rychlejší zpracování routery
+
+==== Zápis IPv6 adresy ====
+
+128 bitů zapsáno jako 8 skupin po 16 bitech v hexadecimální soustavě:
+
+**2001:0db8:85a3:0000:0000:8a2e:0370:7334**
+
+===== Pravidla zkracování =====
+
+  1. **Úvodní nuly ve skupině lze vynechat:**
+     - 0370 → 370
+     - 00a3 → a3
+     - 0001 → 1
+  2. **Jedna skupina nul lze nahradit :: (pouze jednou v adrese):**
+     - 2001:0db8:0000:0000:0000:8a2e:0370:7334 → 2001:db8::8a2e:370:7334
+
+**Speciální adresy:**
+  * **::1** - loopback (localhost)
+  * **::** - nespecifikovaná adresa
+  * **2001:db8::/32** - dokumentační prefix (RFC 3849)
+
+==== Typy IPv6 adres ====
+
+===== Unicast =====
+
+| Typ | Prefix | Popis |
+| **Global Unicast** | 2000::/3 | Veřejná adresa, směrovatelná na Internetu |
+| **Unique Local** | fc00::/7 | Privátní adresa (obdoba 10.0.0.0/8 v IPv4) |
+| **Link-Local** | fe80::/10 | Automatická adresa pro komunikaci v rámci jedné linky (povinná) |
+
+===== Multicast =====
+
+Nahrazuje broadcast z IPv4. Prefix **ff00::/8**.
+
+Příklady:
+  * **ff02::1** - všichni uzly v síti
+  * **ff02::2** - všechny routery v síti
+  * **ff02::9** - RIP routery
+
+===== Anycast =====
+
+Adresa přiřazená více rozhraním. Paket je doručen **nejbližšímu** (podle routování) příjemci.
+
+==== Hlavička IPv6 ====
+
+IPv6 hlavička má pevnou velikost **40 B** (na rozdíl od IPv4 20-60 B):
+
+| Pole | Velikost | Popis |
+| Verze | 4 bity | 6 |
+| Traffic Class | 8 bitů | QoS |
+| Flow Label | 20 bitů | Označení toku |
+| Payload Length | 16 bitů | Délka dat |
+| Next Header | 8 bitů | Typ další hlavičky (TCP=6, UDP=17, ICMPv6=58) |
+| Hop Limit | 8 bitů | TTL (max 255 hopů) |
+| Source Address | 128 bitů | Zdrojová adresa |
+| Destination Address | 128 bitů | Cílová adresa |
+
+==== ICMPv6 ====
+
+ICMPv6 je rozšířený oproti ICMPv4. Zahrnuje:
+
+  * **NDP (Neighbor Discovery Protocol)** - nahrazuje ARP z IPv4
+    * **NS/NA** (Neighbor Solicitation/Advertisement) - zjištění MAC adresy
+    * **RS/RA** (Router Solicitation/Advertisement) - zjištění routerů a prefixů
+  * **SLAAC** (Stateless Address Autoconfiguration) - automatická konfigurace adres bez DHCP
+  * **Path MTU Discovery** - zjištění maximální velikosti paketu na cestě
+
+==== Přechod z IPv4 na IPv6 ====
+
+| Mechanismus | Popis |
+| **Dual Stack** | Zařízení má IPv4 i IPv6 adresu současně |
+| **Tunneling** | IPv6 paket zapouzdřen do IPv4 (6to4, Teredo, GRE) |
+| **NAT64/DNS64** | Překlad mezi IPv6 a IPv4 sítěmi |

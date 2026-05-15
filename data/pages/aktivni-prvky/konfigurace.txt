@@ -1,0 +1,51 @@
+====== Základní konfigurace ======
+
+==== Způsoby konfigurace ====
+
+  * **Webové rozhraní (GUI)** - přístup přes webový prohlížeč (HTTP/HTTPS)
+  * **Příkazová řádka (CLI)** - přístup přes SSH, Telnet, nebo sériový konzolový port
+  * **SNMP** - vzdálená správa pomocí SNMP protokolu
+
+==== Příklad konfigurace switch (Cisco) ====
+
+<code>
+Switch> enable
+Switch# configure terminal
+Switch(config)# hostname SW1
+SW1(config)# interface vlan 1
+SW1(config-if)# ip address 192.168.1.10 255.255.255.0
+SW1(config-if)# no shutdown
+SW1(config-if)# exit
+SW1(config)# ip default-gateway 192.168.1.1
+SW1(config)# interface fastEthernet 0/1
+SW1(config-if)# description Pripojeni k routeru
+SW1(config-if)# no shutdown
+SW1(config)# exit
+SW1# show running-config
+SW1# copy running-config startup-config
+</code>
+
+==== Příklad konfigurace routeru ====
+
+<code>
+Router> enable
+Router# configure terminal
+Router(config)# hostname R1
+R1(config)# interface gigabitEthernet 0/0
+R1(config-if)# ip address 192.168.1.1 255.255.255.0
+R1(config-if)# no shutdown
+R1(config-if)# exit
+R1(config)# ip route 0.0.0.0 0.0.0.0 10.0.0.1
+R1(config)# exit
+R1# show ip route
+</code>
+
+==== Základní kroky při konfiguraci ====
+
+  1. Připojení k zařízení (konzolový kabel, SSH)
+  2. Nastavení základních parametrů (hostname, hesla)
+  3. Konfigurace rozhraní (IP adresa, VLAN)
+  4. Nastavení routování (statické nebo dynamické)
+  5. Zabezpečení (ACL, firewall)
+  6. Uložení konfigurace
+  7. Ověření funkčnosti (ping, show commands)

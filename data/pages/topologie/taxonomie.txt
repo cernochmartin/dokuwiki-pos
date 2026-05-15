@@ -1,0 +1,32 @@
+====== Taxonomie počítačových sítí ======
+
+Počítačové sítě můžeme třídit podle několika kritérií:
+
+==== Podle geografického rozsahu ====
+
+^ Typ ^ Rozsah ^ Popis ^
+| **PAN** (Personal Area Network) | několik metrů | Osobní síť (Bluetooth, USB) |
+| **LAN** (Local Area Network) | desítky metrů až 1 km | Lokální síť (škola, kancelář) |
+| **MAN** (Metropolitan Area Network) | desítky km | Městská síť |
+| **WAN** (Wide Area Network) | stovky až tisíce km | Rozlehlá síť (Internet) |
+| **WLAN** (Wireless LAN) | desítky metrů | Bezdrátová lokální síť (Wi-Fi) |
+
+==== Podle topologie (fyzické zapojení) ====
+
+^ Topologie ^ Popis ^ Výhody ^ Nevýhody ^
+| **Sběrnice (Bus)** | Všechna zařízení na jednom kabelu | Jednoduchá, úsporná | Při poruše kabelu padá celá síť |
+| **Hvězda (Star)** | Všechna zařízení připojena k centrálnímu prvku (switch) | Spolehlivá, snadná diagnostika | Závislost na centrálním prvku |
+| **Kruh (Ring)** | Zařízení zapojena do kruhu | Žádné kolize | Při poruše jednoho uzlu může padnout celý kruh |
+| **Strom (Tree)** | Hierarchické uspořádání | Snadné rozšiřování | Složitější konfigurace |
+| **Mesh (síť)** | Každé zařízení propojeno s každým | Maximální spolehlivost | Vysoká cena a složitost |
+
+==== Podle přenosového média ====
+
+  * **Metalické** - kroucená dvojlinka (UTP, STP), koaxiální kabel
+  * **Optické** - jednovidová a mnohovidová optická vlákna
+  * **Bezdrátové** - rádiové vlny (Wi-Fi, Bluetooth, LTE)
+
+==== Podle logického uspořádání ====
+
+  * **Client-Server** - jeden nebo více serverů poskytuje služby klientům
+  * **Peer-to-Peer (P2P)** - všechna zařízení jsou si rovna, mohou poskytovat i využívat služby

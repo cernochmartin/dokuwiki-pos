@@ -1,0 +1,49 @@
+====== Síťové kabely ======
+
+==== Kategorie UTP kabelů ====
+
+| Kategorie | Frekvence | Max. rychlost | Délka | Použití |
+| **Cat 3** | 16 MHz | 10 Mb/s | 100 m | Telefon, 10BaseT (historické) |
+| **Cat 5** | 100 MHz | 100 Mb/s | 100 m | 100BaseTX (historické) |
+| **Cat 5e** | 100 MHz | 1 Gb/s | 100 m | Běžné sítě (dnes minimum) |
+| **Cat 6** | 250 MHz | 1 Gb/s (10 Gb/s do 55 m) | 100 m | Náročnější sítě |
+| **Cat 6a** | 500 MHz | 10 Gb/s | 100 m | Datová centra |
+| **Cat 7** | 600 MHz | 10 Gb/s | 100 m | Stíněné, průmysl |
+| **Cat 7a** | 1000 MHz | 10 Gb/s | 100 m | Vysoké frekvence |
+| **Cat 8.1/8.2** | 2000 MHz | 25/40 Gb/s | 30 m | Datová centra |
+
+==== Maximální délky ====
+
+  * **UTP (Ethernet):** 100 m na segment
+  * **Koaxiál (10Base2):** 185 m
+  * **Koaxiál (10Base5):** 500 m
+  * **Multi-mode optika:** 300-550 m (záleží na rychlosti)
+  * **Single-mode optika:** 10-100+ km
+
+==== Krimpovací nůžky ====
+
+Postup krimpování konektoru RJ-45:
+
+  1. Odizolovat plášť kabelu (cca 2-3 cm)
+  2. Rozplést páry a seřadit vodiče podle standardu (T568A nebo T568B)
+  3. Srovnat a zastřihnout vodiče na stejnou délku
+  4. Zasunout vodiče do konektoru RJ-45 až na doraz
+  5. Zalisovat konektor krimpovacími kleštěmi
+  6. Otestovat kabel pomocí kabelového testeru
+
+==== Optické kabely ====
+
+| Vlastnost | Multi-mode (MMF) | Single-mode (SMF) |
+| Průměr jádra | 50 nebo 62,5 µm | 9 µm |
+| Průměr pláště | 125 µm | 125 µm |
+| Zdroj světla | LED | Laser |
+| Vlnová délka | 850/1300 nm | 1310/1550 nm |
+| Barva konektoru | Béžová/černá | Modrá |
+
+==== Kabelový tester ====
+
+Základní nástroj pro ovězení správnosti zapojení kabelu:
+
+  * Testuje spojitost všech 8 vodičů
+  * Detekuje zkrat, přerušení, přeslechy
+  * U pokročilých testerů i délku kabelu a měření parametrů (certifikace)

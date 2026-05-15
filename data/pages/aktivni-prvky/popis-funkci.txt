@@ -1,0 +1,41 @@
+====== Popis funkcí aktivních prvků ======
+
+==== Hub (rozbočovač) ====
+
+  * **Vrstva:** Fyzická (L1)
+  * **Funkce:** Přijme signál z jednoho portu a **replikuje ho na všechny ostatní porty**
+  * **Výhody:** Levný, jednoduchý
+  * **Nevýhody:** Sdílená přenosová kapacita, kolize, nefiltruje provoz
+  * **Dnes:** Prakticky se nepoužívá, nahrazen switchi
+
+==== Switch (přepínač) ====
+
+  * **Vrstva:** Linková (L2)
+  * **Funkce:** Přeposílá rámce pouze na **cílový port** na základě MAC adres
+  * **Výhody:** Vyšší propustnost, žádné kolize (full-duplex), filtrování provozu
+  * **Technologie:** MAC tabulka (CAM), Spanning Tree (STP), VLAN
+  * **Typy:** Neřízený (unmanaged), řízený (managed), L3 switch
+
+==== Router (směrovač) ====
+
+  * **Vrstva:** Síťová (L3)
+  * **Funkce:** Přeposílá pakety mezi **různými sítěmi** na základě IP adres a routovací tabulky
+  * **Výhody:** Propojování sítí, řízení provozu, bezpečnost (NAT, ACL)
+  * **Klíčové funkce:** Routování, NAT, DHCP server, firewall
+
+==== Access Point (AP) ====
+
+  * **Vrstva:** Linková (L2)
+  * **Funkce:** Zprostředkovává bezdrátové připojení (Wi-Fi) pro klientská zařízení do drátové sítě
+  * **Režimy:** Režim AP, most (bridge), repeater
+  * **Důležité parametry:** SSID, kanál, zabezpečení (WPA2/WPA3)
+
+==== Modem ====
+
+  * **Funkce:** **Modulace a demodulace** signálu - převádí digitální signál na analogový (a opačně)
+  * **Typy:**
+    * DSL modem (telefonní linka)
+    * Kabelový modem (koaxiální kabel)
+    * Optický modem (ONT - Optical Network Terminal)
+    * Mobilní modem (LTE/5G modem)
+  * **Poznámka:** Dnes je modem často integrován do kombinovaného zařízení (router + switch + AP + modem)

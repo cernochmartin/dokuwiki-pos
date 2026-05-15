@@ -1,0 +1,20 @@
+====== Bezpečnost v počítačových sítích ======
+
+Tento celek pokrývá základní principy kyberbezpečnosti, ochranu hesel, bezpečnostní hrozby a obranné mechanismy. **(10 hodin)**
+
+----
+
+===== Podtémata =====
+
+  * [[bezpecnost:kyberbezpecnost|Základní principy kyberbezpečnosti]]
+  * [[bezpecnost:hesla|Problematika hesel]]
+  * [[bezpecnost:hrozby|Hrozby v sítích]]
+  * [[bezpecnost:firewall-vpn-vlan|Firewall, VPN a VLAN]]
+  * [[bezpecnost:ids-ips|IDS a IPS]]
+  * [[bezpecnost:socialni-inzenyrstvi|Sociální inženýrství a bezpečnostní politiky]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování se budete orientovat v základních principech kyberbezpečnosti, definovat základní způsoby napadení sítí a orientovat se v principech jejich obrany, navrhnete vhodné zabezpečení počítačové sítě a ochráníte síť vhodnými prostředky.

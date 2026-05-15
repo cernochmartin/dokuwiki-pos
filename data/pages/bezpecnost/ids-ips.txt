@@ -1,0 +1,71 @@
+====== IDS a IPS ======
+
+==== Co je IDS a IPS? ====
+
+Systémy pro detekci a prevenci průniku do sítě nebo systému:
+
+  * **IDS** (Intrusion Detection System) - **detekuje** útok a alarmuje
+  * **IPS** (Intrusion Prevention System) - **detekuje a blokuje** útok v reálném čase
+
+==== Typy podle umístění ====
+
+===== NIDS / NIPS (Network-based) =====
+
+Monitoruje celý síťový provoz na klíčových místech sítě.
+
+  * **Výhody:** Chrání celou síť, transparentní pro zařízení
+  * **Nevýhody:** Nevidí šifrovaný provoz, může být zahlcen
+  * **Umístění:** Za firewallem, na vstupu do sítě
+
+===== HIDS / HIPS (Host-based) =====
+
+Monitoruje aktivitu na jednom konkrétním zařízení (server, PC).
+
+  * **Výhody:** Vidí šifrovaný provoz, detailní pohled na systém
+  * **Nevýhody:** Spotřebovává zdroje zařízení, nutná instalace na každý stroj
+  * **Příklady:** OSSEC, Wazuh, Windows Defender
+
+==== Metody detekce ====
+
+===== Signature-based =====
+
+Porovnává provoz s databází známých útoků (signatur).
+
+  * **Výhody:** Nízká míra falešných poplachů u známých útoků
+  * **Nevýhody:** Neodhalí nové (zero-day) útoky, nutná pravidelná aktualizace
+
+===== Anomaly-based =====
+
+Vytvoří si model "normálního" provozu a detekuje odchylky.
+
+  * **Výhody:** Může odhalit neznámé útoky
+  * **Nevýhody:** Vysoká míra falešných poplachů
+
+===== Behavior-based =====
+
+Sleduje chování uživatelů a systémů a hledá podezřelé vzorce.
+
+==== Známé IDS/IPS systémy ====
+
+| Název | Typ | Licence |
+| **Snort** | NIDS/NIPS | Open Source (Cisco) |
+| **Suricata** | NIDS/NIPS | Open Source |
+| **Zeek (dříve Bro)** | NIDS | Open Source |
+| **OSSEC** | HIDS | Open Source |
+| **Wazuh** | HIDS (fork OSSEC) | Open Source |
+| **Cisco Firepower** | NIPS | Komerční |
+
+==== Umístění v síti ====
+
+IPS se typicky umísťuje **za firewall** (nebo jako součást NGFW):
+
+<code>
+Internet → Firewall → IPS → Switch → LAN
+</code>
+
+IDS se umísťuje **mimo hlavní datovou cestu** - kopie provozu (SPAN port):
+<code>
+Internet → Firewall → Switch → LAN
+                     ↓ (kopie provozu)
+                    IDS (monitoring only)
+</code>

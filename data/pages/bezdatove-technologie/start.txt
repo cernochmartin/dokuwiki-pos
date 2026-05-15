@@ -1,0 +1,18 @@
+====== Bezdrátové technologie ======
+
+Tento celek se zabývá principy bezdrátových přenosů, používanými standardy a zabezpečením bezdrátových sítí. **(8 hodin)**
+
+----
+
+===== Podtémata =====
+
+  * [[bezdatove-technologie:principy|Principy bezdrátových přenosů]]
+  * [[bezdatove-technologie:standardy|Používané standardy a zabezpečení]]
+  * [[bezdatove-technologie:kanaly-ru seni|Kanály, rušení a pokrytí]]
+  * [[bezdatove-technologie:site-bezpecnost|Zabezpečení bezdrátových sítí]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování budete schopni klasifikovat zařízení bezdrátových technologií, nakonfigurovat bezdrátový přenosový systém a aplikovat zabezpečení bezdrátových sítí.

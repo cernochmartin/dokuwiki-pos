@@ -1,0 +1,37 @@
+====== Principy bezdrátových přenosů ======
+
+==== Základní principy ====
+
+Bezdrátový přenos využívá **elektromagnetické vlny** (rádiové vlny) k přenosu dat vzduchem. Vysílač moduluje data na nosnou vlnu a vysílá ji anténou. Přijímač signál zachytí a demoduluje.
+
+==== Frekvenční pásma ====
+
+^ Pásmo ^ Frekvence ^ Využití ^
+| **2,4 GHz** | 2,400 - 2,4835 GHz | Wi-Fi, Bluetooth, mikrovlnky, ZigBee |
+| **5 GHz** | 5,150 - 5,825 GHz | Wi-Fi (vyšší rychlost, menší dosah) |
+| **6 GHz** | 5,925 - 7,125 GHz | Wi-Fi 6E / Wi-Fi 7 |
+| **900 MHz** | 868 - 928 MHz | IoT, LoRa, sigfox |
+| **60 GHz** | 57 - 66 GHz | WiGig (802.11ad) |
+
+==== Koordinace frekvencí ====
+
+Pásma jsou regulována státními orgány:
+  * **ČR:** Český telekomunikační úřad (ČTÚ)
+  * **Evropa:** ETSI (European Telecommunications Standards Institute)
+  * **Celosvětově:** ITU (International Telecommunication Union)
+
+Bezdrátové sítě Wi-Fi používají **nelicencovaná pásma** (ISM - Industrial, Scientific, Medical), kde může provoz vysílat kdokoli za splnění podmínek (maximální vyzářený výkon).
+
+==== Rušení a kanály ====
+
+V pásmu 2,4 GHz je k dispozici 13 (14) kanálů, každý o šířce 22 MHz. Kanály se překrývají. Pouze kanály **1, 6 a 11** se vzájemně nepřekrývají (v Evropě). V pásmu 5 GHz je k dispozici více nepřekrývajících se kanálů.
+
+==== Bluetooth ====
+
+  * Krátký dosah (cca 10 m)
+  * Nízká spotřeba
+  * Pásmo 2,4 GHz (ISM)
+  * Technika: **Frequency Hopping Spread Spectrum** (FHSS) - 79 kanálů, 1600 přeskoků/s
+  * Standard: IEEE 802.15.1
+  * Verze: Bluetooth Classic, Bluetooth Low Energy (BLE)
+  * Profily: A2DP (audio), HFP (hands-free), PAN (síť) aj.

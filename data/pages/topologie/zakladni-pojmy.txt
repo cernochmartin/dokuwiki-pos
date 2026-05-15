@@ -1,0 +1,31 @@
+====== Základní pojmy ======
+
+==== Přenos ====
+Přenos dat je proces přemísťování informace z jednoho místa na druhé pomocí přenosového média (kabel, vzduch, optické vlákno).
+
+==== Kanál ====
+Komunikační kanál je cesta, kterou data putují od odesílatele k příjemci. Může být fyzický (kabel) nebo logický (frekvence).
+
+==== Okruh ====
+Okruh je vyhrazená komunikační cesta mezi dvěma body, která je udržována po celou dobu komunikace (typické pro telefonní sítě).
+
+==== Uzel ====
+Uzel je aktivní nebo pasivní zařízení v síti (počítač, switch, router, tiskárna), které data zpracovává nebo přeposílá.
+
+==== Síť ====
+Síť je soubor vzájemně propojených zařízení (uzlů), která spolu komunikují a sdílejí prostředky.
+
+==== Rámce ====
+Rámec (frame) je datová jednotka na **linkové vrstvě** (vrstva 2). Obsahuje hlavičku s MAC adresami, data a kontrolní součet.
+
+==== Buňky ====
+Buňka (cell) je malá datová jednotka pevné délky (53 B), používaná v technologii **ATM** (Asynchronous Transfer Mode).
+
+==== Pakety ====
+Paket je datová jednotka na **síťové vrstvě** (vrstva 3). Obsahuje hlavičku s IP adresami a samotná data.
+
+==== Segmenty ====
+Segment je datová jednotka na **transportní vrstvě** (vrstva 4). V TCP je segment tvořen hlavičkou TCP a daty.
+
+==== Zprávy ====
+Zpráva (message) je datová jednotka na **aplikační vrstvě** - data v podobě, v jaké je generuje aplikace (např. HTTP požadavek, e-mail).

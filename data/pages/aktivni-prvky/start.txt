@@ -1,0 +1,18 @@
+====== Aktivní prvky sítí ======
+
+Tento celek se zaměřuje na aktivní síťové prvky, jejich funkce a základní konfiguraci. **(4 hodiny)**
+
+----
+
+===== Podtémata =====
+
+  * [[aktivni-prvky:popis-funkci|Popis funkcí aktivních prvků]]
+  * [[aktivni-prvky:konfigurace|Základní konfigurace]]
+  * [[aktivni-prvky:managed-switch|Managed switch (VLAN, STP, LACP)]]
+  * [[aktivni-prvky:siteove-kabely|Síťové kabely a konektory]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování budete schopni rozlišit aktivní prvky podle jejich základních funkcí, zvolit použití aktivních prvků podle daných podmínek a nakonfigurovat základní parametry aktivního prvku sítě.

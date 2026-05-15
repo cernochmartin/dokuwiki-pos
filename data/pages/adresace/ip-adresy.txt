@@ -1,0 +1,57 @@
+====== IP adresy a třídy ======
+
+==== IPv4 adresa ====
+
+IPv4 adresa je 32bitové číslo (4 oktety), zapisované v desítkové soustavě oddělené tečkami, např. **192.168.1.10**.
+
+  * Každá adresa se skládá z **identifikátoru sítě** (network ID) a **identifikátoru zařízení** (host ID).
+  * Rozhraní mezi nimi určuje **maska sítě** (netmask).
+
+==== Třídy IP adres ====
+
+Klasické rozdělení (classful addressing) podle prvního oktetu:
+
+| Třída | Rozsah prvního oktetu | Maska (výchozí) | Počet sítí | Počet hostů |
+| **A** | 1 - 126 | 255.0.0.0 (/8) | 126 | 16 777 214 |
+| **B** | 128 - 191 | 255.255.0.0 (/16) | 16 384 | 65 534 |
+| **C** | 192 - 223 | 255.255.255.0 (/24) | 2 097 152 | 254 |
+| **D** | 224 - 239 | Multicast | - | - |
+| **E** | 240 - 255 | Rezervováno | - | - |
+
+Speciální adresy:
+  * **0.0.0.0** - Výchozí cesta (default route)
+  * **127.0.0.0/8** - Loopback (localhost) - 127.0.0.1
+  * **255.255.255.255** - Broadcast (všechna zařízení v síti)
+
+==== Privátní (neveřejné) IP adresy ====
+
+Podle RFC 1918 jsou vyhrazeny pro interní sítě (nejsou směrovány na Internetu):
+
+  * Třída A: **10.0.0.0/8** (10.0.0.0 - 10.255.255.255)
+  * Třída B: **172.16.0.0/12** (172.16.0.0 - 172.31.255.255)
+  * Třída C: **192.168.0.0/16** (192.168.0.0 - 192.168.255.255)
+
+==== Veřejné IP adresy ====
+
+Adresy, které jsou unikátní v celém Internetu. Přiděluje je organizace **IANA** (Internet Assigned Numbers Authority) přes regionální registry (RIPE pro Evropu).
+
+==== Maska sítě ====
+
+Maska určuje, která část adresy patří k síti a která k zařízení. Zapisuje se:
+  * **Desítkově:** 255.255.255.0
+  * **Prefixem (CIDR):** /24
+
+Příklad: IP 192.168.1.100 s maskou 255.255.255.0 (/24)
+  * Síť: 192.168.1.0
+  * Host: 0.0.0.100
+  * Broadcast: 192.168.1.255
+
+==== IPv6 ====
+
+IPv6 je nástupce IPv4 s 128bitovou adresou (16 bytů). Zápis v hexadecimálním tvaru po 16 bitech oddělených dvojtečkou:
+
+**2001:0db8:85a3:0000:0000:8a2e:0370:7334**
+
+  * Zkrácení: 2001:db8:85a3::8a2e:370:7334
+  * Typy adres: Unicast, Anycast, Multicast (žádný broadcast)
+  * Rozsahy: Link-local (fe80::/10), Unique-local (fc00::/7), Global (2000::/3)

@@ -1,0 +1,49 @@
+====== Fyzické topologie ======
+
+==== Sběrnicová topologie (Bus) ====
+
+Všechna zařízení jsou připojena k jedné **sdílené lince** (koaxiální kabel). Data se šíří celou délkou kabelu a každé zařízení rozhoduje, zda jsou určena jemu.
+
+  * **Výhody:** Jednoduchá, nízká cena, snadné rozšíření
+  * **Nevýhody:** Při přerušení kabelu padá celá síť, kolize, nízká bezpečnost
+  * **Standard:** 10Base2 (Thin Ethernet), 10Base5 (Thick Ethernet)
+  * **Zakončení:** Na obou koncích musí být **terminátor** (50 Ω)
+
+==== Hvězdicová topologie (Star) ====
+
+Všechna zařízení jsou připojena **samostatným kabelem** k centrálnímu prvku (switch, hub).
+
+  * **Výhody:** Výpadek jednoho zařízení neovlivní ostatní, snadná diagnostika, škálovatelná
+  * **Nevýhody:** Závislost na centrálním prvku
+  * **Dnes:** Nejrozšířenější topologie v LAN
+
+==== Kruhová topologie (Ring) ====
+
+Každé zařízení je připojeno ke dvěma sousedům a tvoří uzavřený kruh. Data putují jedním směrem a procházejí postupně všemi uzly.
+
+  * **Token passing:** Speciální rámec (token) putuje po kruhu - pouze zařízení s tokenem může vysílat
+  * **Výhody:** Žádné kolize, předvídatelná rychlost
+  * **Nevýhody:** Výpadek jednoho zařízení může narušit celý kruh
+  * **Standardy:** Token Ring (IBM), FDDI
+
+==== Stromová topologie (Tree) ====
+
+Hierarchické uspořádání - kombinace hvězdicových topologií zapojených do stromu. Kořen stromu je obvykle switch nebo router.
+
+  * **Použití:** Velké podnikové sítě
+  * **Výhody:** Snadné rozšiřování, hierarchická správa
+  * **Nevýhody:** Složitější konfigurace
+
+==== Mesh topologie ====
+
+Každé zařízení je propojeno s každým (full mesh) nebo s více zařízeními (partial mesh).
+
+  * **Full Mesh:** n zařízení → n(n-1)/2 spojení (např. 5 zařízení = 10 kabelů)
+  * **Partial Mesh:** Pouze kritická spojení jsou redundantní
+  * **Výhody:** Maximální spolehlivost, žádný výpadek
+  * **Nevýhody:** Vysoká cena a složitost
+  * **Použití:** Páteřní sítě, datová centra, ISP
+
+==== Hybridní topologie ====
+
+Kombinace dvou nebo více základních topologií. Např. hvězdicová páteř s podsítěmi ve tvaru stromu. Většina reálných sítí používá hybridní topologii.

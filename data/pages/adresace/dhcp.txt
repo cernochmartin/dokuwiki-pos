@@ -1,0 +1,54 @@
+====== DHCP a další služby ======
+
+==== DHCP (Dynamic Host Configuration Protocol) ====
+
+DHCP slouží k **automatickému přidělování IP konfigurace** zařízením v síti.
+
+===== Jak DHCP funguje (DORA) =====
+
+  1. **D**iscover - Klient vyšle broadcast (255.255.255.255) s žádostí o IP adresu
+  2. **O**ffer - DHCP server nabídne klientovi IP adresu a další parametry
+  3. **R**equest - Klient potvrdí zájem o nabídnutou adresu
+  4. **A**cknowledge - Server potvrdí přidělení adresy
+
+===== Co DHCP přiděluje =====
+
+  * IP adresu a masku sítě
+  * Výchozí bránu (default gateway)
+  * DNS servery
+  * Případně další parametry (NTP server, domain suffix, ...)
+
+===== Doba zapůjčení (Lease Time) ====
+
+Každá přidělená adresa má omezenou dobu platnosti. Po vypršení si klient musí adresu obnovit.
+
+===== DHCP v praxi ====
+
+DHCP server může být:
+  * Router / modem v domácnosti
+  * Dedikovaný server (Windows Server, Linux - dhcpd, ISC DHCP, dnsmasq)
+  * Switch L3 s funkcí DHCP
+
+==== NAT (Network Address Translation) ====
+
+NAT umožňuje překlad IP adres mezi privátní a veřejnou sítí. Umožňuje, aby zařízení s privátními adresami komunikovala s Internetem přes jednu veřejnou IP adresu.
+
+===== Základní typy NAT =====
+
+| Typ | Popis |
+| **PAT (NAT Overload)** | Mnoho privátních adres → 1 veřejná adresa (přes porty) |
+| **Static NAT** | 1 privátní → 1 veřejná (pevně) |
+| **Dynamic NAT** | 1 privátní → 1 veřejná (z poolu adres) |
+
+Nejčastěji používaný je **PAT** (Port Address Translation), známý také jako **MASQUERADE**.
+
+===== Výhody NAT =====
+
+  * Úspora veřejných IP adres
+  * Základní bezpečnost (skrývá vnitřní síť)
+  * Flexibilita při změně poskytovatele
+
+===== Nevýhody NAT =====
+
+  * Komplikace pro protokoly, které nesou IP adresy v datech
+  * Ztěžuje komunikaci iniciovanou zvenčí (port forwarding)

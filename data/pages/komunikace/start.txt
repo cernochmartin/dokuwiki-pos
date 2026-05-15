@@ -1,0 +1,18 @@
+====== Komunikace v síti ======
+
+Tento tematický celek se věnuje síťovým modelům, komunikačním protokolům a přenosovým technikám. **(16 hodin)**
+
+----
+
+===== Podtémata =====
+
+  * [[komunikace:model-tcpip-iso-osm|Síťový model TCP/IP a RM ISO/OSI]]
+  * [[komunikace:prenosove-techniky|Přenosové techniky]]
+  * [[komunikace:protokoly-vrstvy|Protokoly jednotlivých vrstev]]
+  * [[komunikace:tcp-vs-udp|TCP vs UDP]]
+
+----
+
+===== Výstupy =====
+
+Po absolvování budete schopni rozpoznat základní principy komunikace na síti, využívat referenční model ISO/OSI a TCP/IP k popisu síťové komunikace a definovat základní komunikační protokoly.

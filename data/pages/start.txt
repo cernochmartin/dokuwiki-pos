@@ -1,6 +1,6 @@
 ====== Počítačové sítě (POS) ======
 
-Vítejte na výukovém portálu předmětu **Počítačové sítě** (POS) pro třídy **IT2A** a **IT2B**.
+Vítejte na výukovém portálu předmětu **Počítačové sítě** (POS).
 
 **Vyučující:** Martin Černoch
 **Celková hodinová dotace:** 66 hodin
